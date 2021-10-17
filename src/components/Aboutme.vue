@@ -31,7 +31,6 @@
 
 <script>
 export default {
-  components: {},
   setup(props, {emit}){
     let openmodal = ()=>{
       emit('openmodal')

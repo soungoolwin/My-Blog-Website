@@ -1,0 +1,18 @@
+{
+  "blogs": [
+    {
+      "article": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt corporis cum, omnis fugit corrupti ratione quasi atque nihil dignissimos facilis illo veniam optio dolorum veritatis, accusamus aliquam nulla harum qui.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt corporis cum, omnis fugit corrupti ratione quasi atque nihil dignissimos facilis illo veniam optio dolorum veritatis, accusamus aliquam nulla harum qui.",
+      "image": "https://www.linkpicture.com/q/1200px-Vue.js_Logo_2.svg.png",
+      "heading": "This is heading",
+      "id": 1
+    }
+  ],
+  "admins": [
+    {
+      "email": "admin@gmail.com",
+      "password": "admin12345",
+      "id": 1,
+      "keeplogin": false
+    }
+  ]
+}

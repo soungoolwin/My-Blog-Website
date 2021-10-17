@@ -7,7 +7,6 @@
 import { ref } from '@vue/reactivity';
 import Aboutme from "../components/Aboutme.vue"
 import Reachmemodal from "../components/Reachmemodal.vue"
-import { onUpdated } from '@vue/runtime-core';
 export default {
   name: "Home",
   components: {Aboutme, Reachmemodal},

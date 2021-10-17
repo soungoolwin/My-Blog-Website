@@ -1,14 +1,12 @@
 <template>
   <Navbar></Navbar>
   <router-view/>
-  <Copyrightfooter/>
 </template>
 
 <script>
 import Navbar from "./components/Navbar.vue"
-import Copyrightfooter from "./components/Copyrightfooter.vue"
 export default {
-  components:{Navbar, Copyrightfooter},
+  components:{Navbar},
   setup(){}
 }
 
