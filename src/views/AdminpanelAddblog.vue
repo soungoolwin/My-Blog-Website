@@ -6,8 +6,8 @@
     <div class="row col-md-10 offset-md-1">
         <div class="adminpanelnav">
           <ul>
-            <li class="adminnav"><router-link :to="{name:'Adminpanel-Addblog'}">Add-Blog</router-link></li>
-            <li class="adminnav"><router-link :to="{name:'Adminpanel-Editblog'}">Edit-Blog</router-link></li>
+            <li :class="{disable:modal && !keeplogin}"><router-link :to="{name:'Adminpanel-Addblog'}"  class="adminnav">Add-Blog</router-link></li>
+            <li :class="{disable:modal && !keeplogin}"><router-link :to="{name:'Adminpanel-Editblog'}" class="adminnav">Edit-Blog</router-link></li>
           </ul>
         </div>
 
@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
           <label>Blog</label>
-          <textarea type="text" class="form-control" placeholder="Enter Article" v-model="Blog"></textarea>
+          <textarea type="text" class="form-control text-area" placeholder="Enter Article" v-model="Blog"></textarea>
         </div>
         
         <div class="form-group">
@@ -64,7 +64,6 @@ export default {
           article:Blog.value,
           image:imageUrl.value,
           heading:heading.value,
-          id:blogId.value
         })
       })
       if(res){
@@ -116,5 +115,9 @@ export default {
 }
 .disable{
   pointer-events: none;
+}
+
+.text-area {
+  height: 250px;
 }
 </style>

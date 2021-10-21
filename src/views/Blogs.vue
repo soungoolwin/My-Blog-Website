@@ -1,24 +1,7 @@
 <template>
   <div class="container" v-if="blogs">
     <div v-for="blog in blogs" :key="blog.id" class="articleshadow">
-      <div class="eacharticle">
-        <div class="row col-md-10 offset-md-1">
-          <div class="col-12 col-md-8">
-            <h2>{{ blog.heading }}</h2>
-          </div>
-          <div class="col-12 col-md-4 imageresponse">
-            
-          </div>
-        </div>
-        <div class="row col-md-10 offset-md-1">
-          <div class="col-12 col-md-8">
-            <p>{{ blog.article }}</p>
-          </div>
-          <div class="col-12 col-md-4 imageresponse">
-            <img :src="blog.image" alt="Network error" class="articleimage img-fluid"/>
-          </div>
-        </div>
-      </div>
+        <SingleBlog :blog="blog"></SingleBlog>
     </div>
   </div>
 </template>
@@ -26,11 +9,13 @@
 <script>
 import { ref } from "@vue/reactivity";
 import getData from "../composables/getData";
+import SingleBlog from '../components/SingleBlog'
 export default {
+   components:{ SingleBlog },
   setup() {
     let blogs = ref([]);
     let err = ref("");
-    let api = ref("http://localhost:3000/blogs")
+    let api = ref("http://localhost:3000/blogs/")
 
     let { error, fetchData } = getData();
     let load = async () => {

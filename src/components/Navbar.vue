@@ -7,7 +7,7 @@
           <div>
             <ul class="navs">
               <li class="pcnav" @click="updatekeeplogin"><router-link :to="{name:'Home'}" class="routerlinkstyle">Home</router-link></li>
-              <li @click="mobilenavoff;updatekeeplogin" class="pcnav"><router-link :to="{name:'Blogs'}" class="routerlinkstyle">Blogs</router-link></li>
+              <li @click="mobilenavoff();updatekeeplogin();" class="pcnav"><router-link :to="{name:'Blogs'}" class="routerlinkstyle">Blogs</router-link></li>
               <li class="pcnav"><router-link :to="{name:'Adminpanel-Addblog'}" class="routerlinkstyle">Admin-Panel</router-link></li>
               <li class="pcnav" @click="updatekeeplogin"><router-link :to="{name:'Search'}" class="routerlinkstyle">Search</router-link></li>
               <li class="mobilenav" @click="mobilenavtoggle">Menu</li>
@@ -22,10 +22,10 @@
     <div class="container">
       <div class="row col-md-10 offset-md-1">
         <ul>
-              <li @click="mobilenavoff;updatekeeplogin"><router-link :to="{name:'Home'}" class="routerlinkstyle">Home</router-link></li>
-              <li @click="mobilenavoff;updatekeeplogin"><router-link :to="{name:'Blogs'}" class="routerlinkstyle">Blogs</router-link></li>
-              <li @click="mobilenavoff;updatekeeplogin"><router-link :to="{name:'Adminpanel-Addblog'}" class="routerlinkstyle">Admin-Panel</router-link></li>
-              <li @click="mobilenavoff;updatekeeplogin"><router-link :to="{name:'Search'}" class="routerlinkstyle">Search</router-link></li>
+              <li @click="mobilenavoff();updatekeeplogin();"><router-link :to="{name:'Home'}" class="routerlinkstyle">Home</router-link></li>
+              <li @click="mobilenavoff();updatekeeplogin();"><router-link :to="{name:'Blogs'}" class="routerlinkstyle">Blogs</router-link></li>
+              <li @click="mobilenavoff();updatekeeplogin();"><router-link :to="{name:'Adminpanel-Addblog'}" class="routerlinkstyle">Admin-Panel</router-link></li>
+              <li @click="mobilenavoff();updatekeeplogin();"><router-link :to="{name:'Search'}" class="routerlinkstyle">Search</router-link></li>
         </ul>
       </div>
     </div>
@@ -86,6 +86,9 @@ export default {
 }
 .navbarstyle span {
     color: #A16BED;
+}
+.pcresponsive{
+  z-index: 1;
 }
 /* navbar style flex */
 .flex-container {

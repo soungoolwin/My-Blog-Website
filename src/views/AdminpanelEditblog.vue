@@ -1,19 +1,20 @@
 <template>
+<div v-if="modal && !keeplogin">
+  <AuthcheckModal @modalClose="modalClose" @checkkeeplogin="checkkeeplogin"/>
+</div>
 
-  <div class="container">
+  <div class="container" v-if="blogs">
     <div class="row col-md-10 offset-md-1">
       <div class="adminpanelnav">
           <ul>
-            <li><router-link :to="{name:'Adminpanel-Addblog'}" class="adminnav">Add-Blog</router-link></li>
-            <li><router-link :to="{name:'Adminpanel-Editblog'}" class="adminnav">Edit-Blog</router-link></li>
+            <li :class="{disable:modal && !keeplogin}"><router-link :to="{name:'Adminpanel-Addblog'}" class="adminnav">Add-Blog</router-link></li>
+            <li :class="{disable:modal && !keeplogin}"><router-link :to="{name:'Adminpanel-Editblog'}" class="adminnav">Edit-Blog</router-link></li>
           </ul>
       </div>
     </div>
-  </div>
 
-  <div class="container" v-if="blogs">
     <div v-for="blog in blogs" :key="blog.id" class="articleshadow">
-        <SingleBlog :blog="blog" @delete="deleteBlog"></SingleBlog>
+        <Singleblogforedit :blog="blog" @delete="deleteBlog"></Singleblogforedit>
     </div>
   </div>
 </template>
@@ -21,13 +22,27 @@
 <script>
 import { ref } from "@vue/reactivity";
 import getData from "../composables/getData";
-import SingleBlog from '../components/SingleBlog.vue'
+import Singleblogforedit from '../components/Singleblogforedit'
+import AuthcheckModal from '../components/AuthcheckModal.vue'
 export default {
-  components:{ SingleBlog },
+  components:{ Singleblogforedit, AuthcheckModal },
   setup() {
     let blogs = ref([]);
     let err = ref("");
     let api = ref("http://localhost:3000/blogs")
+    let keeplogin = ref(false)
+
+
+    // for modal
+    let modal = ref(true);
+
+    let checkkeeplogin = (alwayslogin)=>{
+      keeplogin.value = alwayslogin
+    }
+
+        let modalClose = ()=>{
+      modal.value = false
+    }
 
     let { error, fetchData } = getData();
     let load = async () => {
@@ -47,7 +62,7 @@ export default {
         return blog.id != id
       })
     }
-    return { blogs, deleteBlog };
+    return { blogs, deleteBlog, modal, checkkeeplogin, modalClose, keeplogin };
   },
 };
 </script>
@@ -62,6 +77,7 @@ export default {
 .adminpanelnav{
   margin-top: 14%;
   margin-bottom: 20px;
+  z-index: 0;
 }
 .adminpanelnav ul{
   margin-left: 50%;
@@ -81,5 +97,8 @@ export default {
 .adminnav{
   color: black;
   text-decoration: none;
+}
+.disable{
+  pointer-events: none;
 }
 </style>

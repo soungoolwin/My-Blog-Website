@@ -32,6 +32,7 @@ export default {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     top: 0%;
+    z-index: 2;
 }
 .modal1 {
     width: 400px;

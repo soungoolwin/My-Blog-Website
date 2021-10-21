@@ -18,7 +18,10 @@
         </div>
 
         <div class="row col-md-10-offset-md-1">
-
+          <div class="col-12 editblog">
+            <router-link :to="{name:'BlogEdit',params:{id:blog.id}}" class="editrouterlink btn btn-primary">Edit</router-link>
+            <button class="btn btn-primary" @click="deleteBlog">Delete</button>
+          </div>
         </div>
       </div>
 </template>
@@ -29,7 +32,18 @@ export default {
     props:["blog"],
 setup(props,{emit}){
     let blog = ref(props.blog)
-    return{blog}
+    let api = ref("http://localhost:3000/blogs")
+    let deleteBlog = ()=>{
+     fetch(api.value+'/'+blog.value.id,{method:"DELETE"})
+     .then(()=>{
+       emit("delete",blog.value.id)
+     })
+     .catch((err)=>{
+       console.log(err)
+     })
+    }
+
+    return{blog, deleteBlog}
 }
 }
 </script>
@@ -39,20 +53,31 @@ setup(props,{emit}){
   max-width: 100%;
   height: 145px;
 }
+.article{
+  padding: 0px 20px;
+}
 .imageresponse {
   text-align: center;
 }
 .eacharticle{
   padding: 35px 0px;
+  padding-left: 10px;
     margin-top: 55px;
   margin-bottom: 55px;
 }
-.heading {
+.editblog{
+  text-align: center;
+  margin-top: 30px;
+}
+.editblog button {
+  margin-right: 5px;
+}
+.heading{
   margin-bottom: 15px;
   padding: 0px 20px;
 }
-.article{
-  padding-right: 20px;
-  padding-left: 20px;
+.editrouterlink{
+  text-decoration: none;
+  margin-right: 20px;
 }
 </style>

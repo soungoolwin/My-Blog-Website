@@ -17,7 +17,7 @@
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate" v-model="keeplogin">
                     <label class="form-check-label" for="flexCheckIndeterminate">
-                        Indeterminate checkbox
+                        Keep Me Login
                     </label>
                 </div>
                     <button class="btn btn-primary button" @click="updatekeeplogin">Login</button>
